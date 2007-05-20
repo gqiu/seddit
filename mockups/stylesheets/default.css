@@ -1,0 +1,118 @@
+body {
+	font: normal 14px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+#doc3 {
+	margin: 30px;
+}
+
+#info  {
+    text-align: right;
+    background: #333;
+    padding: 8px;
+    color: #777;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+#info a {
+    color: #00aaff;
+    color: blue;
+    font-weight: bolder;
+}
+
+#hd h1 {
+    font-weight: bolder;
+    font-size: 330%;
+    display: inline;
+}
+
+#hd #navigation {
+    float: right;
+}
+#hd #navigation a {
+    font-weight: bold;
+    font-size: 132%;
+    margin: 0 15px 0 15px;
+}
+
+#hd #navigation a:hover {
+    border-bottom: 3px solid blue;
+}
+
+.yui-u .first {
+    border-right: 4px solid #ccc;
+}
+
+.box h3 {
+    font-weight: bold;
+    font-size: 130%;
+}
+
+.box {
+    border: 0px solid #333;
+    margin: 15px;
+    padding: 0px;
+    width: 400px;
+}
+
+.box ul {
+    padding: 0 10px 10px 10px;
+}
+
+/*
+.box {
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-image: url(../images/tr.png), 
+	    url(../images/br.png), 
+	    url(../images/tl.png), 
+	    url(../images/bl.png);
+	background-position: 100% 0, 100% 100%, 0 0, 0 100%;
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+}
+
+
+#tags {
+  background-color: #f7f7f7;
+  padding: 10px 5px 5px 5px;
+  border-bottom: 2px dotted #ccc;
+}
+
+#feature:hover #tags a {
+  border: none;
+}
+
+#tags a {
+  border-bottom: none;
+  text-decoration: none;
+  display: block;
+  float: left;
+  background: #247;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 92%;
+  font-weight: bold;
+  text-shadow: 2px 2px #135;
+  padding: 0px 10px;
+  color: #fff;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background-image: url(../images/tr.png), 
+      url(../images/br.png), 
+      url(../images/tl.png), 
+      url(../images/bl.png);
+  background-position: 100% 0, 100% 100%, 0 0, 0 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+}
+
+#tags a:hover {
+  background-color: #27C;
+  text-shadow: 2px 2px #26A;
+} */
