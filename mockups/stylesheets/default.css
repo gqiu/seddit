@@ -1,11 +1,21 @@
 body {
 	font: normal 14px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #000;
+	height: 100%;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 130%;
 }
 
 a {
     color: blue;
     text-decoration: none;
+}
+
+strong {
+    font-weight: bold;
 }
 
 #doc3 {
@@ -19,6 +29,10 @@ a {
     color: #777;
     font-size: 90%;
     font-weight: bold;
+}
+
+#hd {
+    border-bottom: 3px solid #333;
 }
 
 #info a {
@@ -66,53 +80,66 @@ a {
     padding: 0 10px 10px 10px;
 }
 
-/*
-.box {
-	-moz-border-radius: 8px;
-	border-radius: 8px;
-	background-image: url(../images/tr.png), 
-	    url(../images/br.png), 
-	    url(../images/tl.png), 
-	    url(../images/bl.png);
-	background-position: 100% 0, 100% 100%, 0 0, 0 100%;
-	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+/* message stuff */
+
+#message-box {
+    margin: 20px;
+    background: #eee;
+    overflow: scroll;
+    height: 430px;
 }
 
-
-#tags {
-  background-color: #f7f7f7;
-  padding: 10px 5px 5px 5px;
-  border-bottom: 2px dotted #ccc;
+#message-box span {
+    position: relative;
 }
 
-#feature:hover #tags a {
-  border: none;
+#enter-message textarea {
+    width: 40%;
+    margin: 20px;
+    display: inline;
 }
 
-#tags a {
-  border-bottom: none;
-  text-decoration: none;
-  display: block;
-  float: left;
-  background: #247;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  font-size: 92%;
-  font-weight: bold;
-  text-shadow: 2px 2px #135;
-  padding: 0px 10px;
-  color: #fff;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  background-image: url(../images/tr.png), 
-      url(../images/br.png), 
-      url(../images/tl.png), 
-      url(../images/bl.png);
-  background-position: 100% 0, 100% 100%, 0 0, 0 100%;
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+#enter-message input {
+    display: inline;
 }
 
-#tags a:hover {
-  background-color: #27C;
-  text-shadow: 2px 2px #26A;
-} */
+.row {
+    clear: both;
+    padding-top: 10px;
+ }
+ 
+form {
+    background: #e3e3e3;
+    padding: 10px;
+}
+
+.row .label {
+    float: left;
+    width: 100px;
+    background: #e3e3e3;
+    text-align: right;
+ }
+
+.row .formw {
+    background: #e3e3e3;
+    float: right;
+    width: 335px;
+    text-align: left;
+ }
+ 
+ dl dt {
+     font-weight: bold;
+     margin-top: 12px;
+ }
+ 
+ dl dd {
+     margin-left: 12px;
+ }
+
+
+#ft {
+    border-top: 3px solid #333;
+    margin-top: 22px;
+    padding: 10px;
+    font-weight: bold;
+}

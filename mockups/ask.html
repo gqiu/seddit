@@ -1,0 +1,101 @@
+<!-- #tminclude "includes/header.html" #action#="Ask a Question" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Seddit - Ask a Question</title>
+	
+	<link rel="stylesheet" href="stylesheets/reset-fonts-grids.css" type="text/css" />
+	<link rel="stylesheet" href="stylesheets/default.css" type="text/css" />
+	
+	<script type="text/javascript" src="javascripts/jquery.js"></script>
+</head>
+<body>
+	
+	<div id="info">
+		<span style="float: left;"><span style="color: red">Seddit</span> rev 1 - <a href="http://code.google.com/p/seddit/wiki/WireframeNotes">notes</a></span>
+		welcome <a href="profile.html">drew newberry</a> &mdash; <a href="#">messages</a> &mdash; <a href="#">logout</a>
+	</div>
+	
+	<div id="doc3" class="yui-t7">
+		<div id="hd">
+			<span id="navigation">
+			    <a href="default.html">home</a>
+				<a href="dashboard.html">dashboard</a>
+				<a href="room.html">rooms</a>
+				<a href="find.html">find</a>
+				<a href="ask.html">ask</a>
+			</span>
+			<h1>Ask a Question</h1>
+		</div>
+		
+		<div id="bd">
+			<div class="yui-g">
+<!-- end tminclude -->
+
+	<div class="yui-u first">
+	    <form action="unanswered.html" method="post">
+	        <div class="row">
+    	        <span class="label">your name</span>
+        	    <span class="formw">
+            	    <input type="text" name="name" value="" id="name">
+            	</span>
+        	</div>
+    	
+    	
+        	<div class="row">
+        	    <span class="label">your email</span>
+        	    <span class="formw">
+        	        <input type="text" name="email" value="" id="email">
+        	    </span>
+    	    </div>
+	    
+    	    <div class="row">
+        	    <span class="label">quick summary</span>
+        	    <span class="formw">
+            		<input type="text" name="summary" value="" id="summary">
+            	</span>
+            </div>
+        
+            <div class="row">
+        	    <span class="label">the question</span>
+        	    <span class="formw">
+            		<textarea name="question" rows="8" cols="40"></textarea>
+            	</span>
+            </div>
+		
+    		<div class="row">
+        		<input type="submit" name="ask" value="Ask!" id="ask">
+        	</div>
+        </form>
+	</div>
+
+	<div class="yui-u">
+		<h3>quick help:</h3>
+		
+		<dl>
+		    <dt>why we need your name and email</dt>
+		    <dd>we need your name and email so that we can keep you updated on the status of your question. even though we try and keep the discussions live, they dont always get answered right away. when someone does answer the question, we'll let you know</dd>
+		    
+		    <dt>"quick summary"</dt>
+		    <dd>the summary will show up on the home page, and on the room pages. give just enough information so that people know if they can help you or not.</dd>
+		    
+		    <dt>"the question"</dt>
+		    <dd>this is where your detailed question will go. after someone has decided to answer your question, they will be presented with the full question</dd>
+	    </dl>
+		
+	</div>
+
+<!-- #tminclude "includes/footer.html" -->
+			</div>
+		</div>
+		
+		<div id="ft">Copyright 2007 To Whomever.</div>
+	</div>
+	
+	
+
+</body>
+</html>
+<!-- end tminclude -->
