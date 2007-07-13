@@ -1,0 +1,145 @@
+body {
+	font: normal 14px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000;
+	height: 100%;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 130%;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+strong {
+    font-weight: bold;
+}
+
+#doc3 {
+	margin: 30px;
+}
+
+#info  {
+    text-align: right;
+    background: #333;
+    padding: 8px;
+    color: #777;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+#hd {
+    border-bottom: 3px solid #333;
+}
+
+#info a {
+    color: #00aaff;
+    color: blue;
+    font-weight: bolder;
+}
+
+#hd h1 {
+    font-weight: bolder;
+    font-size: 330%;
+    display: inline;
+}
+
+#hd #navigation {
+    float: right;
+}
+#hd #navigation a {
+    font-weight: bold;
+    font-size: 132%;
+    margin: 0 15px 0 15px;
+}
+
+#hd #navigation a:hover {
+    border-bottom: 3px solid blue;
+}
+
+.yui-u .first {
+    border-right: 4px solid #ccc;
+}
+
+.box h3 {
+    font-weight: bold;
+    font-size: 130%;
+}
+
+.box {
+    border: 0px solid #333;
+    margin: 15px;
+    padding: 0px;
+    width: 400px;
+}
+
+.box ul {
+    padding: 0 10px 10px 10px;
+}
+
+/* message stuff */
+
+#message-box {
+    margin: 20px;
+    background: #eee;
+    overflow: scroll;
+    height: 430px;
+}
+
+#message-box span {
+    position: relative;
+}
+
+#enter-message textarea {
+    width: 40%;
+    margin: 20px;
+    display: inline;
+}
+
+#enter-message input {
+    display: inline;
+}
+
+.row {
+    clear: both;
+    padding-top: 10px;
+ }
+ 
+form {
+    background: #e3e3e3;
+    padding: 10px;
+}
+
+.row .label {
+    float: left;
+    width: 100px;
+    background: #e3e3e3;
+    text-align: right;
+ }
+
+.row .formw {
+    background: #e3e3e3;
+    float: right;
+    width: 335px;
+    text-align: left;
+ }
+ 
+ dl dt {
+     font-weight: bold;
+     margin-top: 12px;
+ }
+ 
+ dl dd {
+     margin-left: 12px;
+ }
+
+
+#ft {
+    border-top: 3px solid #333;
+    margin-top: 22px;
+    padding: 10px;
+    font-weight: bold;
+}
