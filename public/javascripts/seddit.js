@@ -17,13 +17,12 @@ Seddit.Chat.prototype = {
             method: 'get',
             onSuccess: function(transport) {
                 var json = transport.responseText.evalJSON();
-                var template = new Template("<tr class=\"message_row\" id=\"message_#{id}\"><td>#{user}</td><td>#{message}</td></tr>");
+                var template = new Template("<tr class=\"message_row\" id=\"message_#{id}\"><td>#{user}</td><td>#{text}</td></tr>");
                 
                 console.log(json);
                 
                 json.messages.message.each(function(message) {
-                    console.log(template.eval(message));
-               	    new Insertion.Bottom('messages', template.eval(message));
+                    new Insertion.Bottom('messages', template.evaluate(message));
            	    });
             } 
         });
