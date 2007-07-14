@@ -83,3 +83,26 @@ Seddit.prototype = {
         new PeriodicalExecuter(this.crappyUpdate.bind(this), 3);
     }
 };
+
+Room = Class.create();
+Room.prototype = {
+    initialize: function(options) {
+        Object.extend(this, options);
+        this.registerListeners();
+    },
+    
+    registerListeners: function() {
+        Event.observe('create_room', 'click', this.createRoom.bind(this));
+    },
+    
+    createRoom: function() {
+        alert('creating...');
+        new Ajax.Request('/api/room/new', {
+           method: 'post',
+           parameters: $H({title: $F('room_title'), url: $F('room_url'), description: $F('room_description')}),
+           onSuccess: function(transport) {
+               alert('created...');
+           }
+        });
+    }
+};

@@ -4,7 +4,9 @@ import db
 import simplejson
 from view import render
 
-
+#
+#   Threads
+#
 class post:
     def POST(self):
         """ Do add a new message into the database, given a thread id
@@ -27,6 +29,13 @@ class getthreadupdates:
         dataset = db.getthreadupdates(threadid, lastid)
         print jsonformessage(dataset)
         
+#
+#   Rooms
+#
+class newroom:
+    def POST(self):
+        i = web.input()
+        dn.newroom(i.title, i.url. i.description)
         
 #
 #   Utility Methods

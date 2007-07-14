@@ -16,6 +16,8 @@ urls = (
     '/api/poll/(\d+)',              'api.getlog',
     '/api/poll/(\d+)/offset/(\d+)', 'api.getthreadupdates',
     
+    '/api/room/new',                'api.newroom',
+    
     '/rooms',                       'rooms.overview',
     '/rooms/',                      'rooms.overview',
     '/rooms/(.*)',                  'rooms.room',

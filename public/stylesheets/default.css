@@ -144,6 +144,17 @@ form {
     font-weight: bold;
 }
 
+#dev_notes {
+    background: #FF6;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+#dev_notes ul {
+    margin-left: 20px;
+}
+
+
 /*
  *  Chat Functions
  */
@@ -155,4 +166,26 @@ form {
     left: 0;
     bottom: 0;
     padding: 15px 30px 15px 30px;
+}
+
+
+/*
+ *  Modal Style for Control.Modal
+ */
+
+#modal_container {  
+    padding:5px;  
+    background-color:#fff;  
+    overflow:auto;  
+    font-family:"Lucida Grande",Verdana;  
+    color:#333;  
+    text-align:left;  
+} 
+
+#modal_container tr td {
+    margin: 4px;
+}
+
+#modal_overlay {  
+    background-color:#000;  
 }

@@ -10,7 +10,11 @@ def room_list(**k):
 def getlobbyid(name):
     """Return id of a room lobby, given a room name"""
     return getroom(name).thread_id
-
+    
+def newroom(title, url, description):
+    room = web.insert('rooms', title=title, url=url, description=description)
+    lobby = web.insert('threads', room_id=room.id, question="sysem::lobby")
+    web.update('rooms', where='id='+room.id, thread_id=lobby.id)
     
 def getroom(name):
     """Return room from database given the url of the room"""
