@@ -7,9 +7,10 @@ def room_list(**k):
     """
     return web.select('rooms', **k)
     
-def getroomid(name):
-    """Return id of a room, given a room name"""
-    return getroom(name).id
+def getlobbyid(name):
+    """Return id of a room lobby, given a room name"""
+    return getroom(name).thread_id
+
     
 def getroom(name):
     """Return room from database given the url of the room"""

@@ -14,7 +14,7 @@ def roomsoverview():
     return render.rooms(r)
         
 def roomlobby(name):
-    id = db.getroomid(name)
+    id = db.getlobbyid(name)
     return render.lobby(id)
     
 #
