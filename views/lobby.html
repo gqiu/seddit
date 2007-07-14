@@ -1,11 +1,19 @@
 $def with (id)
 
-<script type="text/javascript" charset="utf-8">
-    var chat = new Seddit({"threadId" : $id, "user" : "drew"});
-</script>
-
 <div id="message_container">
     <table id="messages">
     </table>
     
 </div>
+
+
+<div id="chat_functions">
+    <textarea name="message_text" id="message_text" rows="2" cols="50"></textarea>
+    <input type="hidden" name="message_author" value="drew (hidden)" id="message_author">
+    <input type="hidden" name="thread_id" value="$id" id="thread_id">
+    <input type="button" name="message_send" value="Send Message" id="message_send" />
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    var chat = new Seddit({"threadId" : $id, "user" : \$F('message_author')});
+</script>

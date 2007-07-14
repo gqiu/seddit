@@ -5,17 +5,17 @@ import simplejson
 from view import render
 
 
-class sendmessage:
+class post:
     def POST(self):
         """ Do add a new message into the database, given a thread id
         
             the message expects the following parameters
-                - thread_id
+                - threadid
                 - author
                 - message
         """
         i = web.input()
-        db.sendmessage(threadid, author, message)
+        db.sendmessage(i.threadid, i.author, i.message)
         
 class getlog:
     def GET(self, threadid):

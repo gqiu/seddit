@@ -3,6 +3,7 @@ Seddit.prototype = {
     initialize: function(options) {
         Object.extend(this, options);
         this.registerPoller();
+        this.registerSender();
     },
     
     downloadLog: function() {
@@ -19,6 +20,23 @@ Seddit.prototype = {
            	    });
             }
         });
+    },
+    
+    registerSender: function() {
+        Event.observe('message_send', 'click', this.sendMessage.bindAsEventListener(this));
+    },
+    
+    sendMessage: function() {
+        new Ajax.Request('/api/post', {
+            method: 'post',
+            parameters: $H({threadid: $F('thread_id'), author:$F('message_author'), message: $F('message_text')}),
+            
+            onSuccess: function(transport) {
+                console.log('message sent');
+                $F('message_content').reset();
+            }
+        });
+        
     },
     
     getThreadId: function() {

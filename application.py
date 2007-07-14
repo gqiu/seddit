@@ -12,7 +12,7 @@ urls = (
     '/',                            'index',
     '/default',                     'default',
     
-    '/api/send_message',            'api.sendmessage',
+    '/api/post',                    'api.post',
     '/api/poll/(\d+)',              'api.getlog',
     '/api/poll/(\d+)/offset/(\d+)', 'api.getthreadupdates',
     

@@ -143,3 +143,16 @@ form {
     padding: 10px;
     font-weight: bold;
 }
+
+/*
+ *  Chat Functions
+ */
+ 
+#chat_functions {
+    background: #e3e3e3;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 15px 30px 15px 30px;
+}
