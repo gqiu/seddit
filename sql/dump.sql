@@ -60,7 +60,7 @@ ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 -- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dnewberry
 --
 
-SELECT pg_catalog.setval('messages_id_seq', 9, true);
+SELECT pg_catalog.setval('messages_id_seq', 22, true);
 
 
 --
@@ -145,7 +145,7 @@ ALTER SEQUENCE threads_id_seq OWNED BY threads.id;
 -- Name: threads_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dnewberry
 --
 
-SELECT pg_catalog.setval('threads_id_seq', 1, true);
+SELECT pg_catalog.setval('threads_id_seq', 2, true);
 
 
 --
@@ -183,6 +183,16 @@ COPY messages (id, thread_id, author, content, date_sent) FROM stdin;
 7	1	drew	hi there	2007-07-12 12:19:17.552376-07
 8	1	drew	hi there	2007-07-12 12:19:18.105257-07
 9	1	drew	hi there	2007-07-12 12:19:40.90547-07
+13	1	drew n	test	2007-07-13 22:52:40.00535-07
+14	1	drew (hidden)	yo	2007-07-14 01:00:22.141445-07
+15	1	drew (hidden)	this actually works this is pretty sick lets see if we can't get something to wrap past the window size....	2007-07-14 01:00:42.118458-07
+16	1	drew (hidden)	this actually works this is pretty sick lets see if we can't get something to wrap past the window size....	2007-07-14 01:01:11.144212-07
+17	1	drew (hidden)	this actually works this is pretty sick lets see if we can't get something to wrap past the window size....	2007-07-14 01:01:45.935452-07
+18	1	drew (hidden)	this actually works this is pretty sick lets see if we can't get something to wrap past the window size....	2007-07-14 01:02:14.030448-07
+19	1	drew (hidden)	this actually works this is pretty sick lets see if we can't get something to wrap past the window size....	2007-07-14 01:02:14.969991-07
+20	2	drew (hidden)	hi	2007-07-14 04:06:39.784237-07
+21	2	drew (hidden)	hello	2007-07-14 04:06:46.703975-07
+22	2	test user2	yo	2007-07-14 04:08:14.38237-07
 \.
 
 
@@ -191,7 +201,7 @@ COPY messages (id, thread_id, author, content, date_sent) FROM stdin;
 --
 
 COPY rooms (id, title, description, created, url, thread_id) FROM stdin;
-1	web.py	a place to discuss anything and everything about web.py	2007-07-11 23:39:37.6377	webpy	\N
+1	web.py	a place to discuss anything and everything about web.py	2007-07-11 23:39:37.6377	webpy	2
 \.
 
 
@@ -201,6 +211,7 @@ COPY rooms (id, title, description, created, url, thread_id) FROM stdin;
 
 COPY threads (id, room_id, question, resolved, date_started) FROM stdin;
 1	1	how do i start a web.py dev server?	f	2007-07-11 23:40:59.082676
+2	1	system::lobby	f	2007-07-14 09:34:05.133813
 \.
 
 
