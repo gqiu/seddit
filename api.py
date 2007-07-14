@@ -1,4 +1,5 @@
 import view
+import web
 import db
 import simplejson
 from view import render
@@ -16,14 +17,26 @@ class sendmessage:
         i = web.input()
         db.sendmessage(threadid, author, message)
         
-class poll:
+class getlog:
     def GET(self, threadid):
         dataset = db.getlog(threadid)
-        mlist = []
+        print jsonformessage(dataset)
         
-        for m in dataset:
-            mlist.append({ 'id': m.id, 'user': m.author, 'text': m.content, 'time': '%s' % m.date_sent } )
-            
-        messages = { 'messages': { 'message': mlist } }
-        print simplejson.dumps(messages)
+class getthreadupdates:
+    def GET(self, threadid, lastid):
+        dataset = db.getthreadupdates(threadid, lastid)
+        print jsonformessage(dataset)
         
+        
+#
+#   Utility Methods
+#
+def jsonformessage(dataset):
+    """Return JSON formatted string given a sql dataset for messages"""
+    mlist = []
+
+    for m in dataset:
+        mlist.append({ 'id': m.id, 'user': m.author, 'text': m.content, 'time': '%s' % m.date_sent } )
+        
+    messages = { 'messages': { 'message': mlist } }
+    return simplejson.dumps(messages)

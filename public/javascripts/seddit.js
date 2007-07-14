@@ -1,35 +1,56 @@
-var Seddit = {};
-
-Seddit.Chat = Class.create();
-Seddit.Chat.prototype = {    
+Seddit = Class.create();
+Seddit.prototype = {
     initialize: function(options) {
         Object.extend(this, options);
-        console.log(this.threadId);
-        console.log(this.user);
-        
-        this.test = 1
-        this.downloadLog();
-        //this.registerPoller();
+        this.registerPoller();
     },
     
     downloadLog: function() {
-        new Ajax.Request('/api/poll/1', {
+        var threadId = this.threadId;
+        new Ajax.Request('/api/poll/' + this.getThreadId.bind(this), {
+            method: 'get',
+            onSuccess: function(transport) {
+                console.log(callback(this.threadId));
+                var json = transport.responseText.evalJSON();
+                var template = new Template("<tr class=\"message_row\" id=\"message_#{id}\"><td>#{user}</td><td>#{text}</td></tr>");
+                                
+                json.messages.message.each(function(message) {
+                    new Insertion.Bottom('messages', template.evaluate(message));
+           	    });
+            }
+        });
+    },
+    
+    getThreadId: function() {
+        return this.threadId;  
+    },
+    
+    //  we're using this method, that just takes down the entire log every 3 seconds
+    //  because i can't figure out javascripts scopes yet, and i need to get chatting
+    //  working for the mid terms.
+    //
+    //      TODO: get checkPoll and downloadLog working.
+    //              i could probably combine the two functions into one, if i really want
+    //              to. they do essentiall the same thing.
+    crappyUpdate: function() {
+        var threadId = this.threadId;
+        new Ajax.Request('/api/poll/' + threadId, {
             method: 'get',
             onSuccess: function(transport) {
                 var json = transport.responseText.evalJSON();
                 var template = new Template("<tr class=\"message_row\" id=\"message_#{id}\"><td>#{user}</td><td>#{text}</td></tr>");
-                
-                console.log(json);
-                
+                                
+                var html = "";
                 json.messages.message.each(function(message) {
-                    new Insertion.Bottom('messages', template.evaluate(message));
+                    html += template.evaluate(message);
            	    });
-            } 
-        });
+           	    
+           	    $('messages').update(html);
+            }
+        }); 
     },
     
     checkPoll: function() {
-        console.log(this.user);
         new Ajax.Request('/api/poll/' + 1, {
             method: 'get',
             onSuccess: function(transport) {
@@ -38,8 +59,9 @@ Seddit.Chat.prototype = {
             }
         });
     },
-    
+
     registerPoller: function() {
-        new PeriodicalExecuter(this.checkPoll, 3);
+        this.crappyUpdate();
+        new PeriodicalExecuter(this.crappyUpdate.bind(this), 3);
     }
 };

@@ -22,5 +22,11 @@ def getlog(threadid):
     """Return an array of messages for a given thread id"""
     return web.select('messages', where='thread_id = \'' + threadid +'\'')
     
+def getthreadupdates(threadid, lastid):
+    """ Return an array of messages, offset by the last id given.
+    
+        by getting only new messages, it's a more efficient way for updating the thread.
+    """
+    return web.select('messages', where='thread_id = \'' + threadid +'\' AND id > ' + lastid)
 
     

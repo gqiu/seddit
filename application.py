@@ -13,7 +13,8 @@ urls = (
     '/default',                     'default',
     
     '/api/send_message',            'api.sendmessage',
-    '/api/poll/(\d+)',              'api.poll',
+    '/api/poll/(\d+)',              'api.getlog',
+    '/api/poll/(\d+)/offset/(\d+)', 'api.getthreadupdates',
     
     '/rooms',                       'rooms.overview',
     '/rooms/',                      'rooms.overview',
