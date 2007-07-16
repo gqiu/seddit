@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 import web
 import view, config
 import mimetypes
