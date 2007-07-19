@@ -1,5 +1,5 @@
 -- Table: messages
-DROP TABLE messages;
+-- DROP TABLE messages;
 CREATE TABLE messages
 (
   id bigserial NOT NULL,
@@ -11,10 +11,10 @@ CREATE TABLE messages
   CONSTRAINT messages_thread_id_fkey FOREIGN KEY (thread_id)
       REFERENCES threads (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
+);
 
 -- Table: rooms
-DROP TABLE rooms;
+-- DROP TABLE rooms;
 CREATE TABLE rooms
 (
   id serial NOT NULL,
@@ -27,11 +27,11 @@ CREATE TABLE rooms
   CONSTRAINT rooms_thread_id_fkey FOREIGN KEY (thread_id)
       REFERENCES threads (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
+);
 
 
 -- Table: threads
-DROP TABLE threads;
+-- DROP TABLE threads;
 CREATE TABLE threads
 (
   id serial NOT NULL,
@@ -43,6 +43,6 @@ CREATE TABLE threads
   CONSTRAINT threads_room_id_fkey FOREIGN KEY (room_id)
       REFERENCES rooms (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
+);
 
 
