@@ -1,51 +1,46 @@
 $def with (page, title=None)
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
 
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Seddit</title>
+	<title>Seddit - Home</title>
 	
-	<link rel="stylesheet" href="/public/stylesheets/base.css?ver=07112007" type="text/css" />
-	<link rel="stylesheet" href="/public/stylesheets/default.css?ver=07112007" type="text/css" />
+	<link rel="stylesheet" href="/public/stylesheets/default.css?ver=07232007" type="text/css" />
 	
 	<script type="text/javascript" src="/public/javascripts/libs/prototype.js?ver=07112007"></script>
 	<script type="text/javascript" src="/public/javascripts/libs/scriptaculous.js?ver=07112007"></script>
 	<script type="text/javascript" src="/public/javascripts/libs/control.modal.js?ver=07142007"></script>
-	
+
 	<script type="text/javascript" src="/public/javascripts/seddit.js"></script>
+	
 </head>
 <body>
-	
-	<div id="info">
-		<span style="float: left;"><span style="color: red">Seddit</span> rev 1 - <a href="http://code.google.com/p/seddit/wiki/WireframeNotes">notes</a></span>
-		welcome <a href="profile.html">drew newberry</a> &mdash; <a href="user_messages.html">messages</a> &mdash; <a href="#">logout</a>
-	</div>
-	
-	<div id="doc3" class="yui-t7">
-		<div id="hd">
-			<span id="navigation">
-			    <a href="/default">home</a>
-				<a href="dashboard.html">dashboard</a>
-				<a href="/rooms/">rooms</a>
-				<a href="find.html">find</a>
-				<a href="ask.html">ask</a>
-			</span>
-			
-			<h1>Seddit</h1>
-		</div>
-		
-		<div id="bd">
-			<div class="yui-g">    
-			    $:page
-			</div>
-		</div>
-		
-		<!-- <div id="ft">Copyright 2007 To Whomever.</div> -->
-	</div>
-	
-	
-
+    <div id="container">
+        
+        <div id="header">
+            <ul id="links">
+                <li><a href="/dashboard/">dashboard</a></li>
+                <li><a href="/find/">find</a></li>
+                <li><a href="/rooms/">rooms</a></li>
+            </ul>
+            
+            <h1>Seddit <span>ask away...</span></h1>
+        </div>
+        
+        <div id="content">
+            
+            $:page
+            
+            
+        </div>
+        
+        <div id="footer">
+            <p id="copyright">&copy; 2007 to Whomever. <a href="/about">About</a> <a href="http://code.google.com/p/seddit/issues/list">Bugs</a> <a href="http://code.google.com/p/seddit/">Code</a></p>
+        </div>
+        
+    </div>
 </body>
 </html>

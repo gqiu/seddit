@@ -1,191 +1,116 @@
+/* @group reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0; padding:0; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+ol,ul { list-style:none; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+q:before,q:after { content:''; }
+abbr,acronym { border:0; }
+
+/* @group default */
 body {
-	font: normal 14px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #000;
-	height: 100%;
+    font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
+    color: #333;
+    font-size: 12px;
+    text-align: center;
 }
 
-h3 {
-    font-weight: bold;
-    font-size: 130%;
-}
+a { text-decoration: none; }
 
-a {
-    color: blue;
-    text-decoration: none;
-}
-
-strong {
-    font-weight: bold;
-}
-
-#doc3 {
-	margin: 30px;
-}
-
-#info  {
-    text-align: right;
-    background: #333;
-    padding: 8px;
-    color: #777;
-    font-size: 90%;
-    font-weight: bold;
-}
-
-#hd {
-    border-bottom: 3px solid #333;
-}
-
-#info a {
-    color: #00aaff;
-    color: blue;
-    font-weight: bolder;
-}
-
-#hd h1 {
-    font-weight: bolder;
-    font-size: 330%;
-    display: inline;
-}
-
-#hd #navigation {
-    float: right;
-}
-#hd #navigation a {
-    font-weight: bold;
-    font-size: 132%;
-    margin: 0 15px 0 15px;
-}
-
-#hd #navigation a:hover {
-    border-bottom: 3px solid blue;
-}
-
-.yui-u .first {
-    border-right: 4px solid #ccc;
-}
-
-.box h3 {
-    font-weight: bold;
-    font-size: 130%;
-}
-
-.box {
-    border: 0px solid #333;
-    margin: 15px;
-    padding: 0px;
-    width: 400px;
-}
-
-.box ul {
-    padding: 0 10px 10px 10px;
-}
-
-/* message stuff */
-
-#message-box {
-    margin: 20px;
-    background: #eee;
-    overflow: scroll;
-    height: 430px;
-}
-
-#message-box span {
-    position: relative;
-}
-
-#enter-message textarea {
-    width: 40%;
-    margin: 20px;
-    display: inline;
-}
-
-#enter-message input {
-    display: inline;
-}
-
-.row {
-    clear: both;
-    padding-top: 10px;
- }
- 
-form {
-    background: #e3e3e3;
-    padding: 10px;
-}
-
-.row .label {
-    float: left;
-    width: 100px;
-    background: #e3e3e3;
-    text-align: right;
- }
-
-.row .formw {
-    background: #e3e3e3;
-    float: right;
-    width: 335px;
+#container {
     text-align: left;
- }
- 
- dl dt {
-     font-weight: bold;
-     margin-top: 12px;
- }
- 
- dl dd {
-     margin-left: 12px;
- }
-
-
-#ft {
-    border-top: 3px solid #333;
-    margin-top: 22px;
-    padding: 10px;
-    font-weight: bold;
 }
 
-#dev_notes {
-    background: #FF6;
-    margin-bottom: 10px;
+/* @group header */
+
+#header {
+    background: #333;
+    color: #fff;
+}
+
+#header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 30px;
+}
+
+#header h1 span {
+    font-size: 12px;
+    color: #008040;
+}
+
+#header ul {
+    background: #fff;
+    float: right;
     padding: 8px;
 }
 
-#dev_notes ul {
-    margin-left: 20px;
+#header li {
+    display: inline;
+    padding: 8px;
+}
+
+#header li a {
+    color: #333;
 }
 
 
-/*
- *  Chat Functions
- */
- 
-#chat_functions {
-    background: #e3e3e3;
-    position: fixed;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    padding: 15px 30px 15px 30px;
+#header li a:hover {
 }
 
-
-/*
- *  Modal Style for Control.Modal
- */
-
-#modal_container {  
-    padding:5px;  
-    background-color:#fff;  
-    overflow:auto;  
-    font-family:"Lucida Grande",Verdana;  
-    color:#333;  
-    text-align:left;  
-} 
-
-#modal_container tr td {
-    margin: 4px;
+/* @group content */
+#content {
+    margin: 10px auto;
+    width: 900px;
+    background: #e6e6e6;
+    padding: 10px;
 }
 
-#modal_overlay {  
-    background-color:#000;  
+/* @group footer */
+#footer {
+    padding: 30px;
+    font-weight: bold;
+    margin: 0 auto;
+    width: 700px;
+    text-align: center;
 }
+
+#footer a {
+    padding: 0 6px 0 6px;
+}
+
+/* @group transcript */ 
+.chat p {
+    margin: 0;
+    padding: 4px;
+}
+
+.chat tr {
+    background: #fff;
+}
+
+.chat .author {
+    background: #E6F3FE;
+    border-right: 1px solid #CAE5FE;
+    font-weight: bold;
+    text-align: right;
+    padding: 8px;
+}
+
+.chat .message {
+    border-bottom: 1px solid #CAE5FE;
+}
+
+.chat .system {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+}
+
+.chat .system .day {
+    text-align: right;
+}
+
+.chat .system .time { }
