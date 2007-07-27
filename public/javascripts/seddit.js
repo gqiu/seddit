@@ -4,6 +4,13 @@ Seddit.prototype = {
         Object.extend(this, options);
         this.registerPoller();
         this.registerSender();
+        
+        Event.observe('set_author_name', 'click', this.setAuthor.bindAsEventListener(this));
+    },
+    
+    setAuthor: function() {
+        $F('message_author').getValue()  = $F('author_input');
+        console.log($F('author_input'));
     },
     
     downloadLog: function() {
@@ -13,7 +20,7 @@ Seddit.prototype = {
             onSuccess: function(transport) {
                 console.log(callback(this.threadId));
                 var json = transport.responseText.evalJSON();
-                var template = new Template("<tr class=\"message_row\" id=\"message_#{id}\"><td>#{user}</td><td>#{text}</td></tr>");
+                var template = new Template("<tr class=\"line\" id=\"message_#{id}\"><td class=\"author\">#{user}</td><td class=\"message\"><p>#{text}</p></td></tr>");
                                 
                 json.messages.message.each(function(message) {
                     new Insertion.Bottom('messages', template.evaluate(message));
@@ -27,6 +34,7 @@ Seddit.prototype = {
     },
     
     sendMessage: function() {
+        console.log("clicked...");
         new Ajax.Request('/api/post', {
             method: 'post',
             parameters: $H({threadid: $F('thread_id'), author:$F('message_author'), message: $F('message_text')}),
@@ -56,7 +64,7 @@ Seddit.prototype = {
             method: 'get',
             onSuccess: function(transport) {
                 var json = transport.responseText.evalJSON();
-                var template = new Template("<tr class=\"message_row\" id=\"message_#{id}\"><td>#{user}</td><td>#{text}</td></tr>");
+                var template = new Template("<tr class=\"line\" id=\"message_#{id}\"><td class=\"author\">#{user}</td><td class=\"message\"><p>#{text}</p></td></tr>");
                                 
                 var html = "";
                 json.messages.message.each(function(message) {
@@ -64,6 +72,7 @@ Seddit.prototype = {
            	    });
            	    
            	    $('messages').update(html);
+           	    
             }
         }); 
     },

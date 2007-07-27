@@ -12,7 +12,7 @@ urls = (
     '/(public)/.*',                 'public',
     
     '/',                            'index',
-    '/default',                     'default',
+    '/default/',                    'default',
     
     '/api/post',                    'api.post',
     '/api/poll/(\d+)',              'api.getlog',
@@ -29,7 +29,7 @@ urls = (
 
 class index:
     def GET(self):
-        web.seeother('/default')
+        web.seeother('/default/')
 
 class default:
     def GET(self):

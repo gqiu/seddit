@@ -1,6 +1,6 @@
 import web
     
-def room_list(**k):
+def roomlist(**k):
     """ return a list of rooms.
     
         you can also drill down on the query by passing parameters on.
@@ -33,5 +33,3 @@ def getthreadupdates(threadid, lastid):
         by getting only new messages, it's a more efficient way for updating the thread.
     """
     return web.select('messages', where='thread_id = \'' + threadid +'\' AND id > ' + lastid)
-
-    

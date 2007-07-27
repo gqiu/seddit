@@ -1,6 +1,6 @@
 $def with (rooms)
 
-<div id="dev_notes">
+<div id="dev_notes" style="display: none">
     <h3>admin tasks</h3>
     
     <ul>
@@ -17,10 +17,3 @@ $def with (rooms)
 
 $for room in rooms:
     $:render.room_item(room)
-    
-    
-$:render.new_room()
-
-<script type="text/javascript" charset="utf-8">
-    new Control.Modal('new_room');
-</script>

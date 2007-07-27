@@ -10,7 +10,7 @@ render = web.template.render('views/', cache=config.cache)
 #   rooms
 #
 def roomsoverview():
-    r = db.room_list()
+    r = db.roomlist()
     return render.rooms(r)
         
 def roomlobby(name):
