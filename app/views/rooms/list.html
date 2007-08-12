@@ -1,0 +1,7 @@
+$def with (rooms)
+
+$for room in rooms:
+    <div class="room">
+        <p><strong><a href="/rooms/$room.url/lobby/">$room.title</a></strong></p>
+        <p>$room.description</p>
+    </div>

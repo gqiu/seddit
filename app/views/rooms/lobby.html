@@ -1,0 +1,38 @@
+$def with (info, messages, person)
+
+<div class="column span-10">
+    <h3>Lobby</h3>
+    
+    <table class="chat" id="messages">
+    $for message in messages:
+        <tr class="line" id="message_$message['id']">
+            <td class="author">$message['author']</td>
+            <td class="message"><p>$message['content']</p></td>
+        </tr>
+    </table>
+
+    <div id="chat_controls">
+        <!--<form id="controls">-->
+            <input type="hidden" name="author_id" value="$person.id" id="author_id" />
+            <textarea name="message_content" id="message_content" rows="8" cols="40"></textarea>
+            <input type="submit" name="message_send" value="Say" id="message_send" />
+        <!--</form>-->
+    </div>
+
+</div>
+
+
+<div class="column span-3">
+    <a href="/rooms/ask/" style="font-size: 32px">ask a new question</a>
+    
+    <h4>users chatting</h4>
+    <ul>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+	window = new Seddit.Transcript({'id': $info.id, 'author_id': Form.Element.getValue('author_id'),
+		'last_message': $info.last_message});
+</script>

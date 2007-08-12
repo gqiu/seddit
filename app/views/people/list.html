@@ -1,0 +1,7 @@
+$def with (people)
+
+<table>
+$for person in people:
+    <tr><td>$person.name</td><td>$person.email</td><td>$person.clearance</td><td><a href="/people/$person.id/delete/">delete</a></td></tr>
+
+</table>
