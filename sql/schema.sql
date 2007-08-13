@@ -25,6 +25,7 @@ create table threads (
 	id serial primary key,
 	room_id integer references rooms,
 	question text,
+	summary text not null,
 	resolved boolean DEFAULT false,
 	date_started timestamp default now()
 );
