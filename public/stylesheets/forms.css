@@ -19,7 +19,7 @@ form input, textarea {
     margin-left: 20px;
 }
 
-input, textarea {
+input.text, textarea {
     border: 1px solid #e3e3e3;
     font-size: 110%;
 }

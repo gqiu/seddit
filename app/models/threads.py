@@ -7,8 +7,8 @@ from app.models import people
 def getmessages(id):
     return web.select('messages', where='thread_id=%s' % web.sqlquote(id), _test=False)
     
-def new(roomid, question):
-    return web.insert('threads', question=question, roomid=roomid)
+def new(roomid, summary, question):
+    return web.insert('threads', room_id=roomid, summary=summary, question=question)
 
 def newmessage(thread, authorid, message):
     web.insert('messages', author_id=authorid, content=message, thread_id=thread)

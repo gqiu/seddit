@@ -17,7 +17,8 @@ urls = (
     '/rooms/(.*)/lobby/',                   'app.controllers.rooms.lobby',
     '/rooms/threads/',                      'app.controllers.rooms.threadlist',
     '/rooms/thread/(\d+)',                  'app.controllers.rooms.thread',
-                                            
+     
+    '/ask/',                                'app.controllers.threads.ask',                                       
     '/thread/new/',                         'app.controllers.threads.new',
     '/thread/(\d+)/transcript/',            'app.controllers.threads.transcript',
     '/thread/(\d+)/transcript/(\d+)/',      'app.controllers.threads.poll',        

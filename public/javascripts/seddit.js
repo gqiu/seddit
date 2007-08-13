@@ -13,6 +13,10 @@ Seddit.Transcript.prototype = {
         Event.observe('message_send', 'click', this.say.bindAsEventListener(this));
     },
     
+    registerUpdaters: function() {
+        new PeriodicalExecuter(this.poller.bind(this), 4);
+    },
+    
     say: function() {
         console.log('saying something...');
         new Ajax.Request('/thread/' + this.id + '/say/', {
@@ -45,9 +49,23 @@ Seddit.Transcript.prototype = {
              // TODO research the bind function a bit more, i believe it's bad form to bind a function this way.
         });
     },
-    
-    registerUpdaters: function() {
-        new PeriodicalExecuter(this.poller.bind(this), 4);
-    }
   
 };
+
+Seddit.Lobby = Class.create();
+Seddit.Transcript.prototype = {
+    initialize: function(options) {
+        Object.extend(this, options);  
+        
+        this.registerListeners();
+    },
+    
+    registerListeners: function() {
+        Event.observe('new_question', 'click', this.newQuestion.bindAsEventListener(this));
+    },
+    
+    newQuestion: function() {
+        Modalbox.show($('new_question_modal', {title: 'Ask a new Question.', width: 300}));
+    }
+};
+

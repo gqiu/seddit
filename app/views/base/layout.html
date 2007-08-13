@@ -1,4 +1,4 @@
-$def with (page, person=None, title='undefined')
+$def with (page, person=None, title='no where')
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
@@ -29,30 +29,27 @@ $def with (page, person=None, title='undefined')
             </div>
             
             <div class="column span-7 last">
-<p id="logged">
-$if person:
-    you are logged in as <a href="/dashboard/">$person.email</a>, <a href="/logout/">logout</a>.
-$else:
-    you are not logged in. <a href="/login/">login</a> or <a href="/signup/">register</a>
-</p>
+                <p id="logged">
+                $if person:
+                    you are logged in as <a href="/dashboard/">$person.email</a>, <a href="/logout/">logout</a>.
+                $else:
+                    you are not logged in. <a href="/login/">login</a> or <a href="/signup/">register</a>
+                </p>
 
                 <ul>
-$if person:
-    <li><a href="/dashboard/">dashboard</a></li>
-    <li><a href="#">recent</a></li>
-    <li><a href="/search/">search</a></li>	
-$else:
-    <li><a href="/ask/">ask</a></li>
-	<li><a href="/search/">search</a></li>
-	<li><a href="/help/">help</a></li>
-	
-                	
-                	
+                $if person:
+                    <li><a href="/dashboard/">dashboard</a></li>
+                    <li><a href="#">recent</a></li>
+                    <li><a href="/search/">search</a></li>	
+                $else:
+                    <li><a href="/ask/">ask</a></li>
+                	<li><a href="/search/">search</a></li>
+                	<li><a href="/help/">help</a></li>
                 </ul>
             </div>
         </div>
         
-$:page
+        $:page
         
         <div class="column span-14" id="footer">
             <p id="copyright">&copy; 2007 to whomever. 
