@@ -1,40 +1,27 @@
-<h3>Signup!</h3>
+$def with (form, error=False, exists=False)
 
-<form method="post">
-    
-    <ol>
-        <li>
-            <label for="name">Name</label>
-            <input type="text" name="name" value="" id="name" />
-        </li>
-    
-        <li>
-            <label for="email">Email</label>
-            <input type="text" name="email" value="" id="email" />
-        </li>
-    
-        <li>
-            <label for="password">Password</label>
-            <input type="password" name="password" value="" id="password" />
-        </li>
-    
-        <li>
-            <label for="password_verify">Verify Password</label>
-            <input type="password" name="password_verify" value="" id="password_verify" />
-        </li>
+<div class="column span-6 first">
+    <div class="big-box bg">
+        <h3>create an account</h3>
         
-        <li>
-            <div class="buttons">
-                <button type="submit" class="positive" id="create">
-                    <img src="/public/images/tick.png" alt=""/> 
-                    Signup
-                </button>
+        $if exists:
+            <p class="wrong">Sorry, the email you provided is already in use.</p>
 
-                <button type="reset" class="negative" id="cancel">
-                    <img src="/public/images/cross.png" alt=""/> 
-                    Cancel...
-                </button>
-            </div>
-        </li>
-    
-</form>
+        <form method="post">
+            $:form.render()
+            
+            <input type="submit" name="register_go" value="register" id="register_go"> or
+            <a href="#" class="cancel">Cancel</a>...
+        </form>
+    </div>
+</div>
+
+<div class="column span-5 last">
+    <div class="big-box bb">
+        <h3>benefits of registering</h3>
+        <ul>
+            <li>why you should register.</li>
+            <li>TODO: add why you should register. do we even need this?</li>
+        </ul>
+    </div>
+</div>

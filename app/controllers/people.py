@@ -15,6 +15,14 @@ loginform = form.Form(
     form.Hidden("error", value="False")
 )
 
+signupform = form.Form(
+    form.Textbox('name'),
+    form.Textbox('email'),
+    form.Password('password'),
+    form.Password('password_verify'),
+    validators = [form.Validator("Passwords don't match.", lambda i: i.password == i.password_verify)]
+)
+
 class dashboard:
     def GET(self):
         person = auth.getuser()
@@ -23,26 +31,22 @@ class dashboard:
 class signup:
     # TODO add in error reporting
     def GET(self):
-        print config.base.layout(view.signup())
+        f = signupform()
+        print config.base.layout(view.signup(f))
         
     def POST(self):
-        input = web.input()
-        web.debug(input)
-
-        # TODO alert user if the provided email is already in the system.
-        if people.personexists(input.email):
-            web.debug('email is already in the db')
-            web.seeother('/signup/')
+        f = signupform()
         
-        # TODO alert user if passwords don't match
-        if input.password == input.password_verify:
-            password = auth.h(input.password)
-            people.createperson(input.name, input.email, password)
-            print 'hey! it worked!'
+        if f.validates():
+            if(people.personexists(f.d.email)):
+                print config.base.layout(view.signup(f, exists=True))
+            else:
+                password = auth.h(f.d.password)
+                people.createperson(f.d.name, f.d.email, password)
+                web.seeother('/login/')
         else:
-            web.debug('passwords dont match')
-            web.seeother('/signup/')
-
+            print config.base.layout(view.signup(f))
+                
 class login:
     # TODO add a "forgot your password" feature
     def GET(self):
