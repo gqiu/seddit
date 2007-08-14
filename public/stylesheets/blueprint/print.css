@@ -8,37 +8,43 @@
    This file creates CSS styles for printing documents. 
    Include this in the <head> of every page. See the
    Readme file in this directory for further instructions.
-
+   
+   Some additions you'll want to make, 
+   customized to your markup:
+   
+   #heder, #footer, #navigation { display:none; }
+   
 -------------------------------------------------------------- */
 
-body,ul,ol,dl,h1,h2,h3,h4,h5,h6,td,th,
-caption,pre,p,blockquote,input,textarea {
-  font-family: Georgia, Times, serif;
-  line-height: 150%;
-  color:#000;
-  background:none;
-}
 body {
-  background: white;
-  font-size: 12pt;
+  font-family: Georgia, Times, serif;
+  line-height: 1.5;
+  color:#000;
+  background: none;
+  font-size: 11pt;
 }
 
 img { 
   float:left; 
-  margin:10px 10px 10px 0;
+  margin:1.5em 1.5em 1.5em 0;
 }
+p img.top { 
+  margin-top: 0; 
+}
+
 hr { 
   background:#ccc; 
+  color:#ccc;
   width:100%; 
   height:2px; 
-  margin:20px 0; 
+  margin:2em 0; 
   padding:0; 
   border:none; 
 }
 blockquote { 
-  margin:15px 0; 
-  padding:10px; 
-  border:2px solid #ccc; 
+  margin:1.5em 0; 
+  padding:1em; 
+  border:0.2em solid #ccc; 
   font-style:italic; 
   font-size:0.9em; 
 }
@@ -65,9 +71,5 @@ a:link:after, a:visited:after {
 /* a[href^="/"]:after {
   content: " (http://www.yourdomain.com" attr(href) ") ";
 } */
-
-/* If you have navigation on your site, you might want to add something like this:
-   #menu { display:none } */
-
 
 

@@ -24,36 +24,13 @@ body {
   margin:36px 0;
 }
 
-/* A conainer should group all your columns. */
+/* A container should group all your columns. */
 .container {
   text-align: left;
   position: relative;
   padding: 0;
   margin: 0 auto;   /* Centers layout */
   width: 960px;     /* Total width */
-}
-
-/* Clear fix */
-.container:after { 
-  content:  "."; 
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-
-/* Use this to create a horizontal ruler across a column.
-   BUG: Margins butchered in IE */
-hr { 
-  background: lightblue; 
-  color: lightblue; /* IE Fix */
-  clear: both;
-  float: left; 
-  width: 100%; 
-  height: 2px; 
-  margin: 8px 0 8px 0; 
-  padding: 0; 
-  border: none; 
 }
 
 
@@ -69,6 +46,7 @@ hr {
   margin: 0 10px;
   padding: 0;
 }
+* html .column { overflow-x: hidden; } /* IE6 fix */
 
 
 /* Add this class to a column if you want a border on its 
@@ -77,7 +55,7 @@ hr {
 .border {
   padding-right: 9px;
   margin-right: 0;
-  border-right: 1px solid #eee;
+  border-right: 1px solid #ddd;
 }
 
 
@@ -136,13 +114,29 @@ hr {
 
 
 /* Use a .box to create a padded box inside a column. 
-   Sticking to 18px wide gaps since that's the baseline. */ 
+   Sticking to the the baseline. */ 
    
 .box { 
-  padding: 18px; 
-  margin-bottom: 18px; 
+  padding: 1.5em; 
+  margin-bottom: 1.5em; 
   background: #f0f0f0; 
 }
+
+
+/* Clearing floats without extra markup
+   Based on How To Clear Floats Without Structural Markup by PiE
+   [http://www.positioniseverything.net/easyclearing.html] */
+
+.clear { display: inline-block; }   
+.clear:after, .container:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+* html .clear { height: 1%; }
+.clear { display: block; }
 
 
 /* Nudge your elements [subtraction.com/archives/2007/0606_nudge_your_e.php]:
@@ -165,7 +159,7 @@ div, table {
 -------------------------------------------------------------- */
 
 /* Remember the baseline (typography.css). */
-img { margin: 0 0 18px 0; }
+img { margin: 0 0 1.5em 0; }
 
 
 /* Use these classes to make an image flow into the column before 
@@ -175,6 +169,9 @@ img { margin: 0 0 18px 0; }
 .pull-2  { margin-left: -140px; }
 .pull-3  { margin-left: -210px; }
 
-.push-1  { margin: 0 -88px 0 18px; float: right; }
-.push-2  { margin: 0 -158px 0 18px; float: right; }
-.push-3  { margin: 0 -228px 0 18px; float: right; }
+.push-0  { margin: 0 0 0 1.5em; float: right; } /* Right aligns the image. */
+.push-1  { margin: 0 -88px 0 1.5em; float: right; }
+.push-2  { margin: 0 -158px 0 1.5em; float: right; }
+.push-3  { margin: 0 -228px 0 1.5em; float: right; }
+
+
