@@ -8,6 +8,14 @@ body {
     font-size: 12px;
 }
 
+/* @group boxes */
+.big-box {
+    border: 1px solid #e3e3e3;
+    border-top: 4px solid red;
+    padding: 5px;
+    background: #F8F8F8;
+}
+
 /* @group site-messages */
 .note {
     border: 1px solid #CC0;
