@@ -20,6 +20,7 @@ urls = (
      
     '/ask/',                                'app.controllers.threads.ask',                                       
     '/thread/new/',                         'app.controllers.threads.new',
+    '/thread/(\d+)',                        'app.controllers.threads.chat',
     '/thread/(\d+)/transcript/',            'app.controllers.threads.transcript',
     '/thread/(\d+)/transcript/(\d+)/',      'app.controllers.threads.poll',        
     '/thread/(\d+)/say/',                   'app.controllers.threads.say',

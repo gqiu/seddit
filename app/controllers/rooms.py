@@ -10,6 +10,7 @@ view = web.template.render('app/views/rooms/', cache=config.cache)
 class listing:
     def GET(self):
         roomlist = rooms.getrooms()
+            
         print config.base.layout(view.list(roomlist), auth.getuser())
 
 class lobby:

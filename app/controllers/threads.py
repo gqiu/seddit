@@ -24,6 +24,11 @@ class transcript:
         # TODO if a trasncript is requested for an invalid thread id, tell the user.
         print simplejson.dumps(threads.threadtranscript(id))
         
+class chat:
+    def GET(self, id):
+        thread = threads.getthread(id)
+        print config.base.layout(view.thread(thread), person)
+        
 class poll:
     def GET(self, id, offset):
         messages = threads.messageoffset(id, offset)
