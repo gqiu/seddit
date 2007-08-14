@@ -1,8 +1,15 @@
 $def with (form)
 
-<h2>What'd you want to know?</h2>
+<div class="column span-7 first">
+    <div class="big-box bg">
+        <h2>What'd you want to know?</h2>
+        
+        $if not form.valid:
+            <p class="error">Sorry your username or password was incorrect.</p>
 
-<form name="main" method="post">
-    $:form.render()
-    <input type="submit" name="ask" value="ask it!" id="ask" />
-</form>
+        <form name="main" method="post">
+            $:form.render()
+            <input type="submit" name="ask" value="ask it!" id="ask" />
+        </form>
+    </div>
+</div>

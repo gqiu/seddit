@@ -1,11 +1,19 @@
 import web
 import config
 
+from web import form
+
 from app.models import people
 from app.utilities import auth
 from app.utilities import mail
 
 view = web.template.render('app/views/people/', cache=config.cache)
+
+loginform = form.Form(
+    form.Textbox('email', form.notnull),
+    form.Password('password', form.notnull),
+    form.Hidden("error", value="False")
+)
 
 class dashboard:
     def GET(self):
@@ -38,20 +46,23 @@ class signup:
 class login:
     # TODO add a "forgot your password" feature
     def GET(self):
-        print config.base.layout(view.login())
+        f = loginform()
+        print config.base.layout(view.login(f))
         
     def POST(self):
-        input = web.input()
-        password = auth.h(input.password)
-        web.debug(password)
+        f = loginform()
         
-        person = people.authenticate(input.email, password)
-        
-        if person:
-            auth.setcookie(person)
-            web.seeother('/dashboard/')
+        if f.validates():
+            password = auth.h(f.d.password)
+            person = people.authenticate(f.d.email, password)
+            
+            if person:
+                auth.setcookie(person)
+                web.seeother('/dashboard/')
+            else:
+                print config.base.layout(view.login(f, error=True))
         else:
-            print 'sorry, didn\'t work'
+            print config.base.layout(view.login(f))
             
 class logout:
     def GET(self):

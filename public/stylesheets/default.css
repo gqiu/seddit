@@ -1,11 +1,15 @@
 /* @group imports */
-/*@import "forms.css"; */
+@import "forms.css";
 
 /* @group default */
 body {
     font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
     color: #333;
     font-size: 12px;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* @group boxes */
@@ -15,6 +19,11 @@ body {
     padding: 5px;
     background: #F8F8F8;
 }
+
+.bg { border-top: 6px solid green; }
+.by { border-top: 6px solid yellow; }
+.br { border-top: 6px solid red; }
+.bb { border-top: 6px solid blue; }
 
 /* @group site-messages */
 .note {
@@ -33,6 +42,11 @@ body {
 }
 
 /* @group header */
+#header {
+    border-bottom: 2px solid #999;
+    margin-bottom: 10px;
+}
+
 
 #header a {
     text-decoration: none;
@@ -41,6 +55,7 @@ body {
 #header h1 {
     font-weight: bold;
     font-size: 42px;
+    display: inline;
 }
 
 #header h1 a {
@@ -54,12 +69,21 @@ body {
 
 #header ul {
     text-align: right;
+    display: inline;
 }
 
 #header li {
     display: inline;
     padding: 0 0 0 12px;
     font-weight: bold;
+}
+
+#header li a {
+    font-size: 18px;
+}
+
+#header li a:hover {
+
 }
 
 #header #logged {
@@ -72,11 +96,15 @@ body {
 /* @group footer */
 
 #footer {
-    margin: 20px 0 0 0;
+    border-top: 2px solid #999;
+    padding: 4px;
+    margin-top: 10px;
+    text-align: right;
 }
 
 #footer #copyright {
     font-weight: bold;
+    text-align: right;
 }
 
 #footer #copyright a {

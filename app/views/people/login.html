@@ -1,29 +1,27 @@
-<h3>Login</h3>
+$def with (form, error=False)
 
-<form method="post">    
-    <ol>
-        <li>
-            <label for="email">email address</label>
-            <input type="text" name="email" value="" id="email" />
-        </li>
+<div class="column span-5 first">
+    <div class="big-box bg">
+        <h3>login</h3>
         
-        <li>
-            <label for="password">password</label>
-            <input type="password" name="password" value="" id="password" />
-        </li>
-        
-        <li>
-            <div class="buttons">
-                <button type="submit" class="positive" id="create">
-                    <img src="/public/images/tick.png" alt=""/> 
-                    log in
-                </button>
+        $if error:
+            <p class="wrong">Your username or password is incorrect.</p>
 
-                <button type="reset" class="negative" id="cancel">
-                    <img src="/public/images/cross.png" alt=""/> 
-                    cancel
-                </button>
-            </div>
-        </li>
-    </ol>
-</form>
+        <form method="post">    
+        $:form.render()
+
+        <input type="submit" name="some_name" value="login" id="some_name"> or
+
+        <a href="/default/" style="color:red;font-weight: bold;font-size:16px;text-decoration: none">Cancel</a>.
+        </form>
+
+    </div>
+</div>
+
+<div class="column span-8 last">
+    <div class="big-box by">
+        <h3>having problems logging in?</h3>
+        <strong>TODO: implement password retrieval</strong>
+    </div>
+    
+</div>
