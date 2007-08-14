@@ -28,6 +28,7 @@ a.cancel:hover {
     border: 1px solid #e3e3e3;
     border-top: 4px solid red;
     padding: 5px;
+    margin-bottom: 10px;
     background: #F8F8F8;
 }
 
@@ -39,9 +40,10 @@ a.cancel:hover {
 /* @group site-messages */
 .note {
     border: 1px solid #CC0;
-    background: #FF6;
-    display: inline;
+    background: #FFFF9F;
     padding: 10px;
+    margin: 10px 0 10px 0;
+
 }
 
 .error {

@@ -8,6 +8,7 @@ create table people (
     email text unique,
     name text,
     password text,
+    dashboard_messages text,
     clearance int default 1,
     date_joined timestamp default now()
 );

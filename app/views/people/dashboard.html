@@ -1,9 +1,13 @@
 $def with (person)
 
-<h2 style="padding:0">$person.name</h2>
-<strong>$person.email</strong>
-<p>
-<div class="note">
-    hey this is a test
+<div class="column span-6 first">
+    
+    $if person.dashboard_messages:
+        <div class="note">
+            $:person.dashboard_messages
+        </div>
+    
+    <div class="big-box bg">
+        <h3>Hi $person.name!</h3>
+    </div>
 </div>
-</p>
