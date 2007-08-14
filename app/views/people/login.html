@@ -1,8 +1,11 @@
-$def with (form, error=False)
+$def with (form, error=False, success=None)
 
 <div class="column span-5 first">
     <div class="big-box bg">
         <h3>login</h3>
+        
+        $if success:
+            <p class="success">$success</p>
         
         $if error:
             <p class="wrong">Your username or password is incorrect.</p>
