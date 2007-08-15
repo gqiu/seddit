@@ -23,7 +23,20 @@ a.cancel:hover {
     color: white;
 }
 
+/* @group rooms */
+.room {
+    padding: 10px;
+}
+
+.odd {
+    background: #F4F4F4;
+}
+
 /* @group boxes */
+.boxbeta {
+    background: #333;
+}
+
 .big-box {
     border: 1px solid #e3e3e3;
     border-top: 4px solid red;

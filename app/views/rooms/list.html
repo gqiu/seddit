@@ -1,10 +1,18 @@
 $def with (rooms, threads)
+$ odd = True
 
 <div class="column span-9 first">
     $for room in rooms:
-        <div class="room">
-            <p><strong><a href="/rooms/$room.url/lobby/">$room.title</a></strong></p>
-            <p>$room.description</p>
+        $if odd:
+            <div class="room">
+                $ odd = False
+        $else:
+            <div class="room odd">
+            $ odd = True
+            
+                
+        <strong><a href="/rooms/$room.url/lobby/">$room.title</a></strong>
+        <p>$room.description</p>
         </div>
 </div>
 
