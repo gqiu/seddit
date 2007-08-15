@@ -1,35 +1,40 @@
 $def with (info, messages, person)
 
-<div class="column span-10">
-    <h3>Lobby</h3>
+<div class="column span-14" id="chat">
+    <div class="column span-10">
+        <h3>Lobby</h3>
     
-    <table class="chat" id="messages">
-    $for message in messages:
-        <tr class="line" id="message_$message['id']">
-            <td class="author">$message['author']</td>
-            <td class="message"><p>$message['content']</p></td>
-        </tr>
-    </table>
+        <table class="chat" id="messages">
+        $for message in messages:
+            <tr class="line" id="message_$message['id']">
+                <td class="author">$message['author']</td>
+                <td class="message"><p>$message['content']</p></td>
+            </tr>
+        </table>
+        
+        <div id="message_bottom">&nbsp;</div>
 
-    <div id="chat_controls">
-        <!--<form id="controls">-->
-            <input type="hidden" name="author_id" value="$person.id" id="author_id" />
-            <textarea name="message_content" id="message_content" rows="8" cols="40"></textarea>
-            <input type="submit" name="message_send" value="Say" id="message_send" />
-        <!--</form>-->
     </div>
 
+
+    <div class="column span-3" id="side">
+
+        <a href="/ask/">ask a new question</a>
+    
+        <h4>users chatting</h4>
+        <ul>
+            <li><a href="#"></a></li>
+        </ul>
+    </div>
 </div>
 
 
-<div class="column span-3">
-
-    <a href="/ask/">ask a new question</a>
-    
-    <h4>users chatting</h4>
-    <ul>
-        <li><a href="#"></a></li>
-    </ul>
+<div class="column span-14" id="chat_controls">
+    <form id="chat_form" onsubmit="return false;">
+        <input type="hidden" name="author_id" value="$person.id" id="author_id" />
+        <textarea name="message_content" id="message_content" rows="3" cols="60"></textarea>
+        <input type="submit" name="message_send" value="Say" id="message_send" />
+    </form>
 </div>
 
 

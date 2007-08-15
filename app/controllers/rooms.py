@@ -10,8 +10,8 @@ view = web.template.render('app/views/rooms/', cache=config.cache)
 class listing:
     def GET(self):
         roomlist = rooms.getrooms()
-            
-        print config.base.layout(view.list(roomlist), auth.getuser())
+        recentthreads = threads.recent()
+        print config.base.layout(view.list(roomlist, recentthreads), auth.getuser())
 
 class lobby:
     def GET(self, room):
@@ -19,4 +19,4 @@ class lobby:
         transcript = threads.threadtranscript(room.thread_id)
         person = auth.getuser()
 
-        print config.base.layout(view.lobby(transcript.thread, transcript.messages, person), person)
+        print config.base.thread(view.lobby(transcript.thread, transcript.messages, person))

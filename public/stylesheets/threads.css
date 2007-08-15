@@ -1,0 +1,27 @@
+/* @group chat */
+#chat  {
+    margin: 35px 0 75px 5px;
+}
+
+#side {
+    position: fixed;
+    right: 130px;
+}
+
+/* @group recent */
+#recent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    background: #fff;
+}
+
+/* @group chat-functions */
+#chat_controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    background: #fff;
+}

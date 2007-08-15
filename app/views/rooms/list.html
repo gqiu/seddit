@@ -1,7 +1,23 @@
-$def with (rooms)
+$def with (rooms, threads)
 
-$for room in rooms:
-    <div class="room">
-        <p><strong><a href="/rooms/$room.url/lobby/">$room.title</a></strong></p>
-        <p>$room.description</p>
-    </div>
+<div class="column span-9 first">
+    $for room in rooms:
+        <div class="room">
+            <p><strong><a href="/rooms/$room.url/lobby/">$room.title</a></strong></p>
+            <p>$room.description</p>
+        </div>
+</div>
+
+<div class="column span-5 last">
+    <h3>recent threads</h3>
+    
+        $for thread in threads:
+            <div class="bubble">
+                <div class="rounded">
+                    <blockquote>
+                        <p>$thread.summary</p>
+                    </blockquote>
+                </div>
+                <cite class="rounded">posted into ....</cite>
+            </div>
+</div>

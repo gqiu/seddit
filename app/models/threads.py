@@ -20,6 +20,7 @@ def messageoffset(id, offset):
     
     for message in messages:
         message['date_sent'] = web.datestr(message['date_sent'])
+        message['author'] = people.getperson(message.author_id).name
         offsetmessages.append(message)
         
     return offsetmessages
@@ -53,5 +54,8 @@ def threadtranscript(threadid):
     
     return transcript
     
-def recentthreads(roomid):
-    return web.select('threads', where='room_id=%i' % roomid, limit=5)
+def recent(roomid=None):
+    if roomid:
+        return web.select('threads', where='room_id=%i' % roomid, limit=5)
+    else:
+        return web.select('threads', limit=5)
