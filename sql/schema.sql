@@ -2,6 +2,8 @@ drop table if exists rooms cascade;
 drop table if exists threads cascade;
 drop table if exists messages cascade;
 drop table if exists people cascade;
+drop table if exists messages cascade;
+drop table if exists recent;
 
 create table people (
     id serial primary key,
@@ -41,3 +43,18 @@ create table messages (
 
 alter table rooms
 	add column thread_id integer references threads;
+	
+create table recent (
+    id bigserial primary key,
+    date_accessed timestamp default now(),
+    message text,
+    thread_id int references threads
+);
+
+create table user_messages (
+    id serial primary key,
+    message text,
+    author_id int references people,
+    read boolean default false,
+    date_sent timestamp default now()
+);
