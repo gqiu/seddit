@@ -13,7 +13,6 @@ view = web.template.render('app/views/threads/', cache=config.cache)
 person = auth.getuser()
 
 qform = form.Form(
-    # TODO use the full name of the room, and use the id name as the unique identifier.
     form.Dropdown('rooms', [(r.id, r.title) for r in rooms.getrooms()]),
     form.Textbox('summary', form.notnull),
     form.Textarea('question'),
