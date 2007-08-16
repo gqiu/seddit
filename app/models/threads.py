@@ -9,6 +9,7 @@ def getmessages(id):
     
 def new(roomid, summary, question):
     id = web.insert('threads', room_id=roomid, summary=summary, question=question)
+    return id
 
 def newmessage(thread, authorid, message):
     web.insert('messages', author_id=authorid, content=message, thread_id=thread)

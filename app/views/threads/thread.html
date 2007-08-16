@@ -1,6 +1,36 @@
-$def with (thread)
+$def with (thread, messages, person)
+
+<div class="column span-14" id="chat">
+    <div class="column span-10">
+        <h3>$thread.summary</h3>
+        
+        <table class="chat" id="messages">
+        $for message in messages:
+            <tr class="line" id="message_$message['id']">
+                <td class="author">$message['author']</td>
+                <td class="message"><p>$message['content']</p></td>
+            </tr>
+        </table>
+        
+        <div id="message_bottom">&nbsp;</div>
+        
+    </div>
+
+    <div class="column span-3" id="side">
+    </div>
+</div>
+
+
+<div class="column span-14" id="chat_controls">
+    <form id="chat_form" onsubmit="return false;">
+        <input type="hidden" name="author_id" value="$person.id" id="author_id" />
+        <textarea name="message_content" id="message_content" rows="3" cols="60"></textarea>
+        <input type="submit" name="message_send" value="Say" id="message_send" />
+    </form>
+</div>
 
 
 <script type="text/javascript" charset="utf-8">
-    
+	window.chat = new Seddit.Transcript({'id': $thread.id, 'author_id': Form.Element.getValue('author_id'),
+		'last_message':0});
 </script>

@@ -26,8 +26,8 @@ class transcript:
         
 class chat:
     def GET(self, id):
-        thread = threads.getthread(id)
-        print config.base.layout(view.thread(thread), person)
+        transcript = threads.threadtranscript(id)
+        print config.base.thread(view.thread(transcript.thread, transcript.messages, auth.getuser()), 'thread')
         
 class poll:
     def GET(self, id, offset):
