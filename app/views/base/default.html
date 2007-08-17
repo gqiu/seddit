@@ -3,9 +3,11 @@
         <h3>1. ask</h3>
         <p>Got something to say? Don't know how to do someting? Get started quickly
             by asking your question here. We'll do our best to answer it.</p>
-            
-        <textarea style="font-size:16px;" name="question" rows="8" cols="40"></textarea>
-        <input type="submit" name="ask_question" value="ask it" id="ask_question" />
+        
+        <form action="/ask/">
+            <textarea style="font-size:16px;" name="question" rows="8" cols="29"></textarea>
+            <input type="submit" name="ask_question" value="ask it" id="ask_question" />
+        </form>
     </div>
 </div>
 
@@ -27,7 +29,9 @@
             what you're doing, and we can cater the system to your own needs, instead of what we think
             your needs are. All you need is your email to get started.</p>
         
-        <input type="text" size="23" style="font-size: 16px;" name="signup-email" value="" id="signup-email" />
-        <input type="submit" name="signup_go" value="signup" id="signup_go">
+        <form action='/signup/'>
+            <input type="text" size="23" style="font-size: 16px;" name="email" value="" id="email" />
+            <input type="submit" name="signup_go" value="signup" id="signup_go">
+        </form>
     </div>
 </div>

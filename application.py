@@ -24,6 +24,10 @@ urls = (
     '/thread/(\d+)/transcript/',            'app.controllers.threads.transcript',
     '/thread/(\d+)/transcript/(\d+)/',      'app.controllers.threads.poll',        
     '/thread/(\d+)/say/',                   'app.controllers.threads.say',
+    
+    '/thread/(\d+)/resolve/',               'app.controllers.threads.resolve',
+    '/thread/(\d+)/archive/',               'app.controllers.threads.archive',
+    '/thread/(\d+)/archive/comment/',       'app.controllers.threads.comment',
                                             
     '/signup/',                             'app.controllers.people.signup',
     '/login/',                              'app.controllers.people.login',

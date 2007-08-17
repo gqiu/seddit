@@ -58,3 +58,18 @@ create table user_messages (
     read boolean default false,
     date_sent timestamp default now()
 );
+
+create table thread_archives (
+    id serial primary key,
+    thread_id int references threads,
+    content text,
+    date_archived timestamp default now()
+);
+
+create table archive_comments (
+    id serial primary key,
+    thread_id int references threads,
+    author_id int references people,
+    date_created timestamp default now(),
+    message text
+);

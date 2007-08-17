@@ -12,10 +12,25 @@ from app.utilities import auth
 view = web.template.render('app/views/threads/', cache=config.cache)
 person = auth.getuser()
 
+def getquestion():
+    input = web.input()
+    try:
+        if input.question:
+            return input.question
+        else:
+            return ''
+    except AttributeError:
+        pass
+        
 qform = form.Form(
     form.Dropdown('rooms', [(r.id, r.title) for r in rooms.getrooms()]),
     form.Textbox('summary', form.notnull),
-    form.Textarea('question'),
+    form.Textarea('question', value=getquestion()),
+)
+
+commentform = form.Form(
+    form.Textarea('comment', form.notnull),
+    form.Hidden('author_id', value=person.id)
 )
 
 class transcript:
@@ -46,12 +61,64 @@ class new:
 class ask:
     def GET(self): 
         form = qform()
-        print config.base.layout(view.ask(form), person)
+        i = web.input()
+        q = ''
+        try:
+            if i.question:
+                form.d.question = i.question
+        except AttributeError:
+            pass
+            
+        print config.base.layout(view.ask(form, q), person)
 
-    def POST(self): 
-        form = qform() 
+    def POST(self):
+        form = qform()
         if not form.validates(): 
             print config.base.layout(view.ask(form), person)
         else:
-            id = threads.new(question=form.d.question, roomid=form.d.rooms, summary=form.d.summary)
+            id = threads.new(question=form.d.question, authorid=person.id, roomid=form.d.rooms, summary=form.d.summary)
             web.seeother('/thread/%i' % id)
+            
+class resolve:    
+    def GET(self, id):
+        """ marks the thread as resolved
+        
+            NOTE only the user that asked the question, can mark the question as resolved. In the future
+            i think that admins will be able to close questions as well, but for now, i haven't
+            implemented that yet.
+            
+            TODO check to make sure the user trying to close the thread is the originating user.
+        """
+        thread = threads.thread(id)
+        aid = thread.archive()
+        web.seeother('/thread/%i/archive/' % thread['id'])
+        
+class archive:
+    def GET(self, id):
+        """ displays the requested thread as an archived webpage.
+        """
+        thread = threads.thread(id)
+        comments = thread.comments()
+        f = commentform()
+        print config.base.layout(view.archive(thread.retrievearchive(), comments, f), person)
+        
+    def POST(self, id):
+        """ applies any changes made to the archived page.
+        
+            TODO provide a reset button, so if someone screws up the page, they can still fix it.
+        """
+        pass
+        
+class comment:
+    def POST(self, id):
+        f = commentform()
+        
+        if not f.validates():
+            web.seeother('/thread/%s/archive/' % id)
+        else:
+            cid = web.insert('archive_comments', thread_id=id, author_id=f.d.author_id, message=f.d.comment)
+            web.seeother('/thread/%s/archive/' % id)
+        
+        
+        
+        

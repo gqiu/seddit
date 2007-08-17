@@ -9,6 +9,16 @@ from app.utilities import mail
 
 view = web.template.render('app/views/people/', cache=config.cache)
 
+def getemail():
+    input = web.input()
+    try:
+        if input.email:
+            return input.email
+        else:
+            return ' '
+    except AttributeError:
+        pass
+
 loginform = form.Form(
     form.Textbox('email', form.notnull),
     form.Password('password', form.notnull),
@@ -17,7 +27,7 @@ loginform = form.Form(
 
 signupform = form.Form(
     form.Textbox('name'),
-    form.Textbox('email'),
+    form.Textbox('email', value=getemail()),
     form.Password('password'),
     form.Password('password_verify'),
     validators = [form.Validator("Passwords don't match.", lambda i: i.password == i.password_verify)]
@@ -71,7 +81,7 @@ class login:
 class logout:
     def GET(self):
         auth.logout()
-        print 'logged out'
+        web.seeother('/default/')
         
 class list:
     def GET(self):
