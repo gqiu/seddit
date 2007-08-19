@@ -105,8 +105,11 @@ def updaterecent(userid, threadid):
     
 def getrecent(userid, limit=5):
     recentthreads = people.getperson(userid).recent_threads
-    tlist = recentthreads.split(' ')
+    tlist = []
     threads = []
+    
+    if recentthreads:
+        tlist = recentthreads.split(' ')
     
     if len(tlist) > limit:
         tlist = tlist[0:limit]
