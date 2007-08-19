@@ -1,0 +1,20 @@
+$def with (recent)
+
+<div class="column span-8 first">
+
+    $ odd = True
+    $for thread in recent:
+        $if odd:
+            <div class="thread odd">
+            $ odd = False
+        $else:
+            <div class="thread">
+            $ odd = True
+        
+        <a style="font-weight: bold; font-size: 14px" href="/thread/$thread['id']">$thread['summary']</a>
+        <div style="font-style:italic;font-size:10px">posted into <a href="/rooms/$thread['room'].url/lobby/">$thread['room'].title</a> $datestr(thread['date_started'])</div>
+        <p>$thread['question']</p>
+        
+        </div>
+    
+</div>
