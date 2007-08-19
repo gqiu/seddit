@@ -11,7 +11,7 @@ create table people (
     name text,
     password text,
     dashboard_messages text,
-    recent_threads text, # TODO decouple this.
+    recent_threads text, -- TODO decouple this.
     clearance int default 1,
     date_joined timestamp default now()
 );
