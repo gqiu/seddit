@@ -18,5 +18,12 @@ def getroom(room):
     else:
         return None
         
+def roombyid(id):
+    room = web.select('rooms', where='id=%s' % web.sqlquote(id), limit=1)
+    if room:
+        return room[0]
+    else:
+        return None
+        
 def roomid(room):
     return getroom(room).id

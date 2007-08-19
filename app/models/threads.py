@@ -2,8 +2,7 @@ import web
 import string
 import config
 from app.models import people
-
-import pdb
+from app.models import rooms
 
 #   module: threads
 
@@ -116,7 +115,9 @@ def getrecent(userid, limit=5):
         thread = web.select('threads', where='id=%s' % web.sqlquote(t), limit=1)
         if thread:
             cur = thread[0]
-            threads.append({'id':cur.id, 'summary':cur.summary})
+            room = rooms.roombyid(cur.room_id)
+            
+            threads.append({'id':cur.id, 'summary':cur.summary, 'question':cur.question, 'date_started':cur.date_started, 'room':room})
         
     return threads
     
@@ -139,6 +140,7 @@ class thread:
         if self['resolved'] == 'True': return
         
         messages = self.getmessages()
+        # TODO instead of hardcoding the html elements in, make use of some kind of template so it can be reformatted easier
         s = "<div id=\"chat_archive\">"
         t = string.Template('<div id="message_$id" class="line"><span class="author">$author</span><span id="message">$message</span></div>')
         

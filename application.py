@@ -14,6 +14,7 @@ urls = (
     '/',                                    'app.controllers.base.index',
     '/default/',                            'app.controllers.base.default',
     '/dashboard/',                          'app.controllers.people.dashboard',
+    '/dashboard/recent/',                   'app.controllers.people.recent',
                                             
     '/rooms/',                              'app.controllers.rooms.listing',
     '/rooms/(.*)/lobby/',                   'app.controllers.rooms.lobby',

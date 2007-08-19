@@ -42,6 +42,12 @@ class dashboard:
         
         print config.base.layout(view.dashboard(person, recent), person)
 
+class recent:
+    def GET(self):
+        person = auth.getuser()
+        recent = threads.getrecent(person.id, limit=40)
+        print config.base.layout(view.recent(recent), person)
+
 class signup:
     # TODO add in error reporting
     def GET(self):
