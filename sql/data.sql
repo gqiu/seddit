@@ -16,3 +16,5 @@ update rooms set thread_id = 4 where id = 4;
 insert into people (email, name) values ('system@seddit.local', 'system');
 insert into people (email, name) values ('drew@revision1.net', 'drew');
 insert into people (email, name) values ('billy joe', 'billy@joe.com');
+
+insert into people(email, name) values('guest@seddit.local', 'guest');

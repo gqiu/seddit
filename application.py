@@ -8,6 +8,8 @@ urls = (
     '/(public)/.*',                         'app.controllers.public.public',
     '/about/',                              'app.controllers.base.about',
     '/help/',                               'app.controllers.base.help',
+    
+    '/test',                                'app.controllers.test.authtest',
                                             
     '/',                                    'app.controllers.base.index',
     '/default/',                            'app.controllers.base.default',

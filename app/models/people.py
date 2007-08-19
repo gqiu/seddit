@@ -1,6 +1,5 @@
 import web
 import config
-from app.utilities import auth
 
 #   module: people
 

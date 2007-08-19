@@ -41,4 +41,3 @@ def getuser():
     if session:
         digest, userid, time = session.split('/')
         return app.models.people.getperson(userid)
-        

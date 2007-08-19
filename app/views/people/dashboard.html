@@ -1,4 +1,4 @@
-$def with (person)
+$def with (person, threads)
 
 <div class="column span-6 first">
     
@@ -9,5 +9,47 @@ $def with (person)
     
     <div class="big-box bg">
         <h3>Hi $person.name!</h3>
+        <p><strong>email:</strong>$person.email</p>
+        
+        <h4>what'd you want to do?</h4>
+        <ol>
+            <li><a href="/ask/">ask a new question</a></li>
+            <li><a href="/rooms/">room list</a></li>
+        </ol>
     </div>
+    
+    <div class="big-box bb">
+        <h3>Your Network</h3>
+        
+        <p>
+            <h4>friends</h4>
+            <strong>TODO: implement friends</strong>
+        </p>
+            
+        <p>
+            <h4>knowledge</h4>
+                <strong>TODO: implement knowledge / areas of expertise</strong>
+        </p>
+        
+        <p>
+            <h4>inbox</h4>
+            <strong>TODO: implement private messaging</strong>
+        </p>
+        
+    </div>
+</div>
+
+<div class="column span-5 last">
+    <h3>top active threads</h3>
+    
+    <h3>recent threads you've visited</h3>
+    $for thread in threads:
+        <div class="bubble">
+            <div class="rounded">
+                <blockquote>
+                    <p><a href="/thread/$thread['id']">$thread['summary']</a></p>
+                </blockquote>
+            </div>
+            <cite class="rounded">posted into ....</cite>
+        </div>
 </div>

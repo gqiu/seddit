@@ -41,6 +41,7 @@ class transcript:
 class chat:
     def GET(self, id):
         transcript = threads.threadtranscript(id)
+        threads.updaterecent(person.id, id)
         print config.base.thread(view.thread(transcript.thread, transcript.messages, auth.getuser()), 'thread')
         
 class poll:

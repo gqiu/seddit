@@ -3,6 +3,8 @@ import string
 import config
 from app.models import people
 
+import pdb
+
 #   module: threads
 
 def getmessages(id):
@@ -75,6 +77,49 @@ def find(id):
         return thread[0]
     else:
         return None
+        
+def updaterecent(userid, threadid):
+    """ updates the user's 'recent_threads' column with the new thread that they just visited
+    
+        returns the updated thread list.
+        
+        TOOD refactor this, it's a prety ugly implementation of recent threads.
+    """
+    threadlist = people.getperson(userid).recent_threads
+    recent = []
+    
+    if threadlist:
+        recent = threadlist.split(' ')    
+    if threadid in recent:
+        recent.remove(threadid)
+        
+    recent.insert(0, threadid)
+    
+    print recent
+    
+    text = recent.pop(0) # take care of the fence post.
+    for r in recent:
+        text += ' ' + r
+
+    web.update('people', where='id=%s' % web.sqlquote(userid), recent_threads=text)
+    return 'threads'
+    
+def getrecent(userid, limit=5):
+    recentthreads = people.getperson(userid).recent_threads
+    tlist = recentthreads.split(' ')
+    threads = []
+    
+    if len(tlist) > limit:
+        tlist = tlist[0:limit]
+
+    for t in tlist:
+        thread = web.select('threads', where='id=%s' % web.sqlquote(t), limit=1)
+        if thread:
+            cur = thread[0]
+            threads.append({'id':cur.id, 'summary':cur.summary})
+        
+    return threads
+    
 
 class thread:
     def __init__(self, id):

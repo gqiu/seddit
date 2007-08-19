@@ -4,8 +4,10 @@ import config
 from web import form
 
 from app.models import people
+from app.models import threads
 from app.utilities import auth
 from app.utilities import mail
+
 
 view = web.template.render('app/views/people/', cache=config.cache)
 
@@ -36,7 +38,9 @@ signupform = form.Form(
 class dashboard:
     def GET(self):
         person = auth.getuser()
-        print config.base.layout(view.dashboard(person), person)
+        recent = threads.getrecent(person.id)
+        
+        print config.base.layout(view.dashboard(person, recent), person)
 
 class signup:
     # TODO add in error reporting
@@ -88,15 +92,11 @@ class list:
         people = people.getpeople()
         print config.base.layout(view.list(people))
 
-
-
 # TODO change deleting, to deactivating.
 class delete:
     def GET(self, id):
         web.debug(id)
         print 'hi'
-
-
 
 class display: pass
 class edit: pass
