@@ -24,8 +24,9 @@ def getquestion():
         
 qform = form.Form(
     form.Dropdown('rooms', [(r.id, r.title) for r in rooms.getrooms()]),
-    form.Textbox('summary', form.notnull),
-    form.Textarea('question', value=getquestion()),
+    form.Textbox('summary', form.notnull, size = 50),
+    form.Textarea('question', value=getquestion(),
+        cols = 50, rows = 20),
 )
 
 commentform = form.Form(
