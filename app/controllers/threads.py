@@ -41,8 +41,14 @@ class transcript:
         
 class chat:
     def GET(self, id):
+        thread = threads.thread(id)
+        
+        if thread['resolved']:
+            web.seeother('/thread/%s/archive/' % id)
+        
         transcript = threads.threadtranscript(id)
         threads.updaterecent(person.id, id)
+        
         recent = threads.getrecent(person.id, limit=2)
         print config.base.thread(view.thread(transcript.thread, transcript.messages, auth.getuser()), recent, 'thread')
         
