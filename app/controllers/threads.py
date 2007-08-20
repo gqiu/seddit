@@ -30,7 +30,8 @@ qform = form.Form(
 )
 
 commentform = form.Form(
-    form.Textarea('comment', form.notnull),
+    form.Textarea('comment', form.notnull,
+        cols=40, rows=10),
     form.Hidden('author_id', value=person.id)
 )
 

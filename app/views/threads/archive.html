@@ -4,17 +4,17 @@ $:archive.content
 
 <h3>Comments</h3>
 
-$ odd = False
+$ odd = True
 $for c in comments:
     $if odd:
-        <div id="comment_$c.id odd" class="comment">
-        $ odd = True
-    $else:
+        <div id="comment_$c.id" class="comment odd">
         $ odd = False
+    $else:
+        $ odd = True
         <div id="comment_$c.id" class="comment">
             
-        <p>$c.message</p>
-        <p>posted $datestr(c.date_created) by $c.author_id</p>
+    <p>$c.message</p>
+    <p>posted $datestr(c.date_created) by $c.author_id</p>
     </div>
 
 <form method=post action='comment/'>
