@@ -7,7 +7,7 @@ view = web.template.render('app/views/base/', cache=config.cache)
 
 class index:
     def GET(self):
-        web.seeother('/default/')
+        print default().GET()
         
 class default:
     def GET(self):
