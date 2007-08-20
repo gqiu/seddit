@@ -1,4 +1,4 @@
-$def with (page, title="who knows")
+$def with (page, recent=None, title="who knows")
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
@@ -35,7 +35,11 @@ $def with (page, title="who knows")
     
     <div class="container" style="margin: 0; padding: 0">
         <div class="column span-14" id="recent">
-            recent: <a href="#">how do i connect to post</a>.... <a href="#">help! i cant turn on my computer</a>... (<a href="#">view more</a>)
+            recent:
+            $for thread in recent:
+                    <a href="/thread/$thread['id']">$thread['summary']</a>...
+                    
+             (<a href="/dashboard/recent/">view more</a> or <a href="/dashboard/">goto dashboard</a>)
         </div>
         
         $:page

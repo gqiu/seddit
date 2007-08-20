@@ -42,7 +42,8 @@ class chat:
     def GET(self, id):
         transcript = threads.threadtranscript(id)
         threads.updaterecent(person.id, id)
-        print config.base.thread(view.thread(transcript.thread, transcript.messages, auth.getuser()), 'thread')
+        recent = threads.getrecent(person.id, limit=2)
+        print config.base.thread(view.thread(transcript.thread, transcript.messages, auth.getuser()), recent, 'thread')
         
 class poll:
     def GET(self, id, offset):

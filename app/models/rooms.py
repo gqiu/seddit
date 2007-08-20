@@ -4,7 +4,11 @@ import config
 #   module: rooms
 
 def getrooms():
-    return web.select('rooms')
+    rooms = web.select('rooms')
+    #  for room in rooms:
+    #      room['threads'] = web.select('threads', where='room_id=%s' % web.sqlquote(room.id), limit=5)
+    
+    return rooms
     
 def getlobby(room):
     room = getroom(room)

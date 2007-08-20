@@ -68,6 +68,9 @@ def recent(roomid=None):
 #   refactored stuff
 #
 
+def forroom(id):
+    return web.select('threads', where='room_id=%s' % web.sqlquote(id)) 
+
 def search(query):
     """ returns a list of threads where the query key terms showed up in.
     

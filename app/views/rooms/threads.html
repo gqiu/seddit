@@ -1,2 +1,20 @@
-$def with (threadlist)
+$def with (room, threads)
+
+<h2>Threads for $room.title</h2>
+
+$ odd = True
+$for thread in threads:
+    $if odd:
+        <div class="thread odd">
+        $ odd = False
+    $else:
+        <div class="thread">
+        $ odd = True
+        
+    <strong><a href="/thread/$thread.id">$thread.summary</a></strong><br />
+    <span style="font-style:italic; font-size: 10px">started $datestr(thread.date_started)</span><br />
+    $thread.question
+    </div>
+        
+
 

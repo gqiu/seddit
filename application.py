@@ -18,6 +18,7 @@ urls = (
                                             
     '/rooms/',                              'app.controllers.rooms.listing',
     '/rooms/(.*)/lobby/',                   'app.controllers.rooms.lobby',
+    '/rooms/(.*)/list/',                    'app.controllers.rooms.list',
     '/rooms/threads/',                      'app.controllers.rooms.threadlist',
     '/rooms/thread/(\d+)',                  'app.controllers.rooms.thread',
      

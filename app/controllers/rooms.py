@@ -18,5 +18,15 @@ class lobby:
         room = rooms.getroom(room)
         transcript = threads.threadtranscript(room.thread_id)
         person = auth.getuser()
+        recent = threads.getrecent(person.id, limit=2)
 
-        print config.base.thread(view.lobby(transcript.thread, transcript.messages, person))
+        print config.base.thread(view.lobby(transcript.thread, transcript.messages, person), recent)
+        
+class list:
+    def GET(self, room):
+        room = rooms.getroom(room)
+        allthreads = threads.forroom(room.id)
+        person = auth.getuser()
+        
+        print config.base.layout(view.threads(room, allthreads), person)
+        
