@@ -80,6 +80,22 @@ class ask:
             id = threads.new(question=form.d.question, authorid=person.id, roomid=form.d.rooms, summary=form.d.summary)
             web.seeother('/thread/%i' % id)
             
+class search:
+    def GET(self):
+        input = web.input()
+        query = None
+        results = None
+        try:            
+            if input.q:
+                query = input.q
+        except AttributeError:
+            pass
+        
+        if query:
+            results = threads.search(query)
+        
+        print config.base.layout(view.search(query, results))
+            
 class resolve:    
     def GET(self, id):
         """ marks the thread as resolved

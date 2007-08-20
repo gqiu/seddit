@@ -68,6 +68,35 @@ def recent(roomid=None):
 #   refactored stuff
 #
 
+def search(query):
+    """ returns a list of threads where the query key terms showed up in.
+    
+        right now it just uses a the LIKE operator against all the messages. after it gets the message
+        list, the algorithm will strip out any duplicate threads. so if we have a two messages from the
+        same thread, we toss out the second message. as you can imagine this is extremely slow
+        
+        TODO: implement postgresql's TSearch2
+    """
+    keywords = query.split(' ')
+    threadids = []
+    messages = []
+    results = []
+    
+    for word in keywords: # all this code does is get message ids that contain our keywords
+        sql = "select * from messages where content like '%%" + word + "%%'"
+        results = web.query(sql)
+        for message in results:
+            if message.id not in messages and message.thread_id not in threadids:
+                messages.append(message.id) # make sure there are no duplicate messages.
+                threadids.append(message.thread_id) # makes sure there are no duplicate threads.
+    results = []   
+    for id in threadids:
+        t = thread(id)
+        r = t.room()
+        results.append({'id':t['id'], 'room_title':r.title, 'room_id': r.id, 'room_url':r.url, 'resolved':t['resolved'], 'question':t['question'], 'summary':t['summary'], 'room_id':t['room_id'], 'date_started':t['date_started']})
+        
+    return results
+
 def find(id):
     # TODO getthread has the same functionality. replace this with getthread.
     thread = web.select('threads', where='id=%s' % web.sqlquote(id), limit=1)
@@ -155,6 +184,9 @@ class thread:
         self['resolved'] = 'True'
         
         return aid
+        
+    def room(self):
+        return web.select('rooms', where='id=%s' % web.sqlquote(self['room_id']), limit=1)[0]
         
     def retrievearchive(self):
         """docstring for retrievearhive"""

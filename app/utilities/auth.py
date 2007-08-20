@@ -36,7 +36,7 @@ def validatecookie(cookie, user):
     
 def getuser():
     # TODO anyone can be any user by just having the id, fix it so it actually authenticates you.
-    session = web.cookies().seddit_session
+    session = web.cookies(seddit_session=None).seddit_session
     
     if session:
         digest, userid, time = session.split('/')

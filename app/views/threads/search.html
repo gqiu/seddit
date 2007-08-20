@@ -1,0 +1,28 @@
+$def with (query, results)
+
+<div class="column span-14" style="">
+    <form action="/search/" method="get">
+        <h2>your search query</h2>
+        <input type="text" style="font-size: 18px; width: 400px" name="q" value="$query" id="q">
+        
+        <input type="submit" style="font-size: 18px;" name="" value="search" id="">
+    </form>
+    
+    $if query:
+        <div style="margin-top:15px;padding:10px;background:#e3e3e3;">
+            <strong>your search for <span style="background:#FF6;">"$query"</span> returned the following results</strong>
+        </div>
+        
+    $for thread in results:
+        <div class="result" id="result_$thread['id']" style="padding: 10px">
+            $if thread['question'] == "system::lobby":
+                <a href="/rooms/$thread['room_url']/lobby/">$thread['room_title'] lobby</a>
+            $else:
+                <a href="/thread/$thread['id']">$thread['summary']</a><br />
+                $thread['question']
+            
+            <div class="">query located in <a href="/rooms/$thread['room_url']/lobby/">$thread['room_title']</a></div>
+            
+        </div>
+    
+</div>
