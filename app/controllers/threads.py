@@ -94,7 +94,7 @@ class search:
         if query:
             results = threads.search(query)
         
-        print config.base.layout(view.search(query, results))
+        print config.base.layout(view.search(query, results), person)
             
 class resolve:    
     def GET(self, id):
